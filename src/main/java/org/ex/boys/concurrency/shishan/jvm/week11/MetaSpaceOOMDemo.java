@@ -44,7 +44,7 @@ public class MetaSpaceOOMDemo {
             });
             Car subCar = (Car) enhancer.create();
             subCar.run();
-            System.out.println("Succes create count:" + (count++));
+            System.out.println("Success create count:" + (count++));
         }
     }
 }
