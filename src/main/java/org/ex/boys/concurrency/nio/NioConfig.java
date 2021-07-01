@@ -12,6 +12,12 @@ import org.ex.boys.concurrency.common.ConfigProperties;
 public class NioConfig extends ConfigProperties {
     static ConfigProperties singleton = new NioConfig("/system.properties");
     public static final String SOCKET_SEND_FILE = singleton.getValue("socket.send.file");
+    public static final String SOCKET_RECEIVE_FILE = singleton.getValue("socket.receive.file");
+    public static final String SOCKET_ADDRESS = singleton.getValue("socket.address");
+    public static final int SOCKET_ADDRESS_PORT = Integer.parseInt(singleton.getValue("socket.address.port"));
+    public static final int SEND_BUFFER_SIZE = Integer.parseInt(singleton.getValue("send.buffer.size"));
+    public static final int SERVER_BUFFER_SIZE = Integer.parseInt(singleton.getValue("server.buffer.size"));
+    public static final String SERVER_SOCKET_PATH = singleton.getValue("socket.receive.path");
 
     private NioConfig(String s) {
         super(s);
