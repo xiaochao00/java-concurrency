@@ -1,4 +1,4 @@
-package org.ex.boys.concurrency.ch1;
+package org.ex.boys.concurrency.book1.ch1;
 
 public class InheritableThreadLocalDemo {
     /**

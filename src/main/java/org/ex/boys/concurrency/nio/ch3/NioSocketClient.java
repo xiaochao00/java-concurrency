@@ -1,7 +1,7 @@
 package org.ex.boys.concurrency.nio.ch3;
 
 import lombok.extern.slf4j.Slf4j;
-import org.ex.boys.concurrency.common.IOUtil;
+import org.ex.boys.concurrency.nio.common.util.IOUtil;
 import org.ex.boys.concurrency.nio.NioConfig;
 
 import java.io.File;
@@ -54,8 +54,8 @@ public class NioSocketClient {
             return;
         }
 
-        String socketAddress = NioConfig.SOCKET_ADDRESS;
-        int socketAddressPort = NioConfig.SOCKET_ADDRESS_PORT;
+        String socketAddress = NioConfig.SOCKET_SERVER_IP;
+        int socketAddressPort = NioConfig.SOCKET_SERVER_PORT;
         long fileSize = file.length();
 
         try {

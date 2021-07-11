@@ -1,7 +1,7 @@
 package org.ex.boys.concurrency.nio.ch3;
 
 import lombok.extern.slf4j.Slf4j;
-import org.ex.boys.concurrency.common.IOUtil;
+import org.ex.boys.concurrency.nio.common.util.IOUtil;
 import org.ex.boys.concurrency.nio.NioConfig;
 
 import java.io.File;
@@ -38,7 +38,7 @@ public class NioSocketServer {
     static class Client {
         // 文件名称
         String fileName;
-        // 长度
+        // 文件的长度
         long fileLength;
         // 开始传输的时间
         long startTime;
@@ -65,7 +65,7 @@ public class NioSocketServer {
         // 3.设置为非阻塞
         serverSocketChannel.configureBlocking(false);
         // 4.绑定链接
-        InetSocketAddress address = new InetSocketAddress(NioConfig.SOCKET_ADDRESS_PORT);
+        InetSocketAddress address = new InetSocketAddress(NioConfig.SOCKET_SERVER_PORT);
         serverSocket.bind(address);
         // 5.将通道绑定到选择器上，并注册IO事件为 接收新连接
         serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
@@ -151,7 +151,7 @@ public class NioSocketServer {
 
                     client.startTime = System.currentTimeMillis();
                     log.info("Begin receive content...");
-
+                    // TODO:这里是否需要减去 8+4
                     client.receiveLength += byteBuffer.capacity();
                     if (byteBuffer.capacity() > 0) {
                         client.fileChannel.write(byteBuffer);
