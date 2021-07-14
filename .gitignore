@@ -4,3 +4,4 @@
 target
 .idea/*
 /java-concurrency.iml
+logs/*
