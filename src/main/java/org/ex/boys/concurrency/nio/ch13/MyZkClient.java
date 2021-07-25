@@ -52,6 +52,9 @@ public class MyZkClient {
         Stat stat = this.client.checkExists().forPath(path);
         if (stat != null) {
             byte[] bytes = this.client.getData().forPath(path);
+            if (bytes == null) {
+                return null;
+            }
             String data = new String(bytes, StandardCharsets.UTF_8);
             log.info("Get data:{} for path:{}.", data, path);
             return data;
@@ -93,4 +96,7 @@ public class MyZkClient {
         return stat == null;
     }
 
+    public CuratorFramework getClient() {
+        return client;
+    }
 }

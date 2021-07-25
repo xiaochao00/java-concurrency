@@ -28,6 +28,9 @@ public class SnowFlakeIdGenerator {
     private void init() {
         // 获取机器码，需要保证不能超过最大值
         this.workerId = ZkIdWorker.INSTANCE.getNodeId();
+        if (workerId > MAX_WORKER_ID) {
+            throw new RuntimeException("The workerId:" + workerId + " is too big.");
+        }
         log.info("Get workerId:{} for IDGenerator.", this.workerId);
         this.workerId = this.workerId << WORKER_ID_SHIFT;
         //
@@ -115,6 +118,5 @@ public class SnowFlakeIdGenerator {
         }
         return curTimestamp;
     }
-
 
 }
