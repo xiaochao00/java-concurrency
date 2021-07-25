@@ -19,6 +19,7 @@ public class NioConfig extends ConfigProperties {
     public static final int SEND_BUFFER_SIZE = Integer.parseInt(singleton.getValue("send.buffer.size"));
     public static final int SERVER_BUFFER_SIZE = Integer.parseInt(singleton.getValue("server.buffer.size"));
     public static final String SERVER_SOCKET_PATH = singleton.getValue("socket.receive.path");
+    public static final String ZK_SERVER_PATH = singleton.getValue("zk.server.address");
 
     private NioConfig(String s) {
         super(s);
